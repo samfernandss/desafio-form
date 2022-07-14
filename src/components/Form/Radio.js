@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
+import Card from 'react-bootstrap/Card';
 
-const Radio = ({ ask, onChecked }) => {
+const RadioComponent = ({ ask, onChecked }) => {
   const [answer, setAnswer] = useState('');
 
   function handleChange({ target }) {
@@ -9,18 +10,20 @@ const Radio = ({ ask, onChecked }) => {
   };
 
   return (
-    <fieldset>
-      <legend>{ask.pergunta}</legend>
+    <Card className='m-2'>
+      <Card.Header>{ask.pergunta}</Card.Header>
       {ask.options.map((option, index) => {
         return (
-          <p key={option}>
-            <input type="radio" id={index} name="answers" value={option} onChange={handleChange}/>
-            <label className='answer' htmlFor={index}>{option}</label>
-          </p>
+          <Card.Body>
+            <p key={option}>
+              <input type="radio" id={index} name="answers" value={option} onChange={handleChange}/>
+              <label className='answer' htmlFor={index}>{option}</label>
+            </p>
+          </Card.Body>
         )
       })}
-    </fieldset>
+    </Card>
   )
 }
 
-export default Radio;
+export default RadioComponent;

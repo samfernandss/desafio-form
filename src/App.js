@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import './App.css';
 import Radio from './components/Form/Radio';
+import Button from 'react-bootstrap/Button';
 
 const perguntas = [
   {
@@ -66,7 +67,7 @@ function App() {
     currentQuestion < perguntas.length
       ? <form className='form' onSubmit={handleSubmit}>
           <Radio ask={perguntas[currentQuestion]} onChecked={handleChecked}/>
-          <button disabled={!isChecked}>Próxima</button>
+          <Button type="submit" disabled={!isChecked}>Próxima</Button>
         </form>
       : correctQuestions()
   );
